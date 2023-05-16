@@ -15,12 +15,12 @@ install_vitasdk () {
 
      Linux*)
       if [ -n "${TRAVIS}" ]; then
-          sudo apt-get install libc6-i386 lib32stdc++6 lib32gcc1 patch
+          apt-get install libc6-i386 lib32stdc++6 lib32gcc1 patch
       fi
       command -v curl || { echo "curl missing (install using: apt install curl)" ; exit 1; }
       if [ ! -d "$INSTALLDIR" ]; then
-        sudo mkdir -p $INSTALLDIR
-        sudo chown $USER:$(id -gn $USER) $INSTALLDIR
+        mkdir -p $INSTALLDIR
+        chown $USER:$(id -gn $USER) $INSTALLDIR
       fi
       wget -O- "$(get_download_link master linux)" | tar xj -C $INSTALLDIR --strip-components=1
      ;;
